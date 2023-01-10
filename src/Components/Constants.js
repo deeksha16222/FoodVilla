@@ -734,4 +734,3 @@ export const restaurantList = [
 ];
 
 
-export default restaurantList;
