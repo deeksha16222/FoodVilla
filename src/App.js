@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import food from "../src/food.jpg";
-import Burger from "../src/Burger.webp";
+import restaurantList from "./constants.js";
 
 function App() {
   return (
@@ -45,20 +45,24 @@ const Header = () => {
   );
 };
 
-const data = {
-  name: "Burger King",
-  image: {Burger},
-  cusines: ["Burgers", "Americans"],
-  rating: "4.3 stars",
-};
-
-const RestaurantCard = () => {
+const RestrauntCard = ({
+  name,
+  cuisines,
+  cloudinaryImageId,
+  lastMileTravelString,
+}) => {
   return (
     <div className="card">
-      <img alt="logo2" src={Burger} />
-      <h2> {data.name} </h2>
-      <h3> {data.cusines.join(",")} </h3>
-      <h4> {data.rating} </h4>
+      <img
+        src={
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+          cloudinaryImageId
+        }
+        alt="foodie"
+      />
+      <h2>{name}</h2>
+      <h3>{cuisines.join(", ")}</h3>
+      <h4>{lastMileTravelString} minutes</h4>
     </div>
   );
 };
@@ -74,17 +78,9 @@ const Footer = () => {
 const Body = () => {
   return (
     <div className="restro-list">
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
+      {restaurantList.map((restaurant) => {
+        return <RestrauntCard {...restaurant.data} key={restaurant.data.id} />;
+      })}
     </div>
   );
 };
