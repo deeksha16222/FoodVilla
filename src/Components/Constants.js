@@ -732,5 +732,3 @@ export const restaurantList = [
     subtype: "basic",
   },
 ];
-
-

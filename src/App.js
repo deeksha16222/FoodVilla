@@ -7,9 +7,9 @@ import Body from "./Components/Body";
 function App() {
   return (
     <div>
-    <Header />
-    <Body />
-    <Footer />
+      <Header />
+      <Body />
+      <Footer />
     </div>
   );
 }
